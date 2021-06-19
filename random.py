@@ -2,13 +2,13 @@
 dummy file
 '''
 
-import pandas as pd
+import pandas as pand
 
 
 list_file = open("List", "wb")
 dataframe_file = open("dataframe", "wb")
 
-dataframe = pd.DataFrame()
+dataframe = pand.DataFrame()
 
 list_values = [1,2,3]
 
