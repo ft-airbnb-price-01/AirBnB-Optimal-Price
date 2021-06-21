@@ -35,11 +35,11 @@ footer = dbc.Container(
         dbc.Col(
             html.P(
                 [
-                    html.Span('Your Name', className='mr-2'), 
-                    html.A(html.I(className='fas fa-envelope-square mr-1'), href='mailto:<you>@<provider>.com'), 
-                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/<you>/<repo>'), 
-                    html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/<you>/'), 
-                    html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/<you>'), 
+                    html.Span('FT-Airbnb-Price-01', className='mr-2'), 
+                    # html.A(html.I(className='fas fa-envelope-square mr-1'), href='mailto:<you>@<provider>.com'), 
+                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/ft-airbnb-price-01/AirBnB-Optimal-Price'), 
+                    # html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/<you>/'), 
+                    # html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/<you>'), 
                 ], 
                 className='lead'
             )
@@ -67,7 +67,7 @@ def display_page(pathname):
     if pathname == '/':
         return index.layout
     elif pathname == '/predictions':
-        return predictions.layout
+        return predict.layout
     elif pathname == '/insights':
         return insights.layout
     elif pathname == '/process':
