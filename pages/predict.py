@@ -68,12 +68,42 @@ column1 = dbc.Col([
         dcc.Dropdown(
         id='zipcode',
         options=[
-            {'label': '10001 (NYC)', 'value': 10001},
-            {'label': '90001 (LA)', 'value': 90001},
-            {'label': '94016 (SF)', 'value': 94016},
-            {'label': '20001 (DC)', 'value': 20001},
-            {'label': '60007 (Chicago)', 'value': 60007},
-            {'label': '02101 (Boston)', 'value': 0o2101}
+            {'label': '02101 (Boston)', 'value': 2101},
+            {'label': '02126 (Boston-South)', 'value': 2126},
+            {'label': '02127 (Boston-East)', 'value': 2127},
+            {'label': '02129 (Boston-North)', 'value': 2129},
+            {'label': '02215 (Boston-West)', 'value': 2215},
+
+            {'label': '10001 (NYC-Manhattan)', 'value': 10001},
+            {'label': '10302 (NYC-Staten Island)', 'value': 10302},
+            {'label': '10453 (NYC-Bronx)', 'value': 10453},
+            {'label': '11212 (NYC-Brooklyn)', 'value': 11212},
+            {'label': '11361 (NYC-Queens)', 'value': 11361},
+
+            {'label': '20001 (DC-Central)', 'value': 20001},
+            {'label': '20003 (DC-South)', 'value': 20003},
+            {'label': '20007 (DC-West)', 'value': 20007},
+            {'label': '20011 (DC-North)', 'value': 20011},
+            {'label': '20018 (DC-East)', 'value': 20018},
+
+            {'label': '60601 (Chicago)', 'value': 60617},
+            {'label': '60044 (Chicago-North)', 'value': 60044},
+            {'label': '60185 (Chicago-West)', 'value': 60185},
+            {'label': '60617 (Chicago-South)', 'value': 60617},
+
+            {'label': '90001 (LA-South)', 'value': 90001},
+            {'label': '90004 (LA-Central)', 'value': 90004},
+            {'label': '90022 (LA-East)', 'value': 90022},
+            {'label': '90024 (LA-West)', 'value': 90024},
+            {'label': '90031 (LA-North)', 'value': 90031},
+
+            {'label': '94015 (SF-South)', 'value': 94015},
+            {'label': '94103 (SF-East)', 'value': 94103},
+            {'label': '94104 (SF-Central)', 'value': 94104},
+            {'label': '94111 (SF-North)', 'value': 94111},
+            {'label': '94116 (SF-West)', 'value': 94116},
+
+
         ],
         placeholder="Zipcode"
         ),
@@ -181,12 +211,13 @@ column1 = dbc.Col([
 
 
     ],
-    md=6,
+    md=4,
 )
 # ])
 
 column2 = dbc.Col(
     [   
+        html.Br(),
         html.Br(),
         html.Br(),
         html.Br(),
@@ -289,7 +320,7 @@ column2 = dbc.Col(
 
 
     ],
-    md=6,
+    md=4,
 )
 
 @app.callback(
