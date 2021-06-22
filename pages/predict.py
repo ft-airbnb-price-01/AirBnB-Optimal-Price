@@ -229,7 +229,8 @@ column2 = dbc.Col(
             dbc.Button(
                 id="button",
                 n_clicks=0,
-                children="Submit"
+                children="Submit",
+                color="primary"
             )
         ]),
 
