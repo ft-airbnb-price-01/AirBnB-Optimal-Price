@@ -36,7 +36,6 @@ column1 = dbc.Col([
         html.Br(),
         html.Br(),
         html.Br(),
-        ## UPDATE INSTANT BOOKABLE VALUES
         dcc.Dropdown(
             id='host_identity_verified',
             options=[
@@ -52,12 +51,12 @@ column1 = dbc.Col([
         dcc.Dropdown(
         id='city',
         options=[
+            {'label': 'Boston', 'value': 0},
             {'label': 'New York City', 'value': 4},
-            {'label': 'Los Angeles', 'value': 3},
-            {'label': 'San Francisco', 'value': 5},
             {'label': 'Washington, DC', 'value': 2},
             {'label': 'Chicago', 'value': 1},
-            {'label': 'Boston', 'value': 0}
+            {'label': 'Los Angeles', 'value': 3},
+            {'label': 'San Francisco', 'value': 5}
         ],
         placeholder="City"
         ),
@@ -66,90 +65,89 @@ column1 = dbc.Col([
         html.Br(),
         html.Br(),
         dcc.Dropdown(
-        id='zipcode',
-        options=[
-            {'label': '02101 (Boston)', 'value': 2101},
-            {'label': '02126 (Boston-South)', 'value': 2126},
-            {'label': '02127 (Boston-East)', 'value': 2127},
-            {'label': '02129 (Boston-North)', 'value': 2129},
-            {'label': '02215 (Boston-West)', 'value': 2215},
+            id='zipcode',
+            options=[
+                {'label': '02101 (Boston)', 'value': 2101},
+                {'label': '02126 (Boston-South)', 'value': 2126},
+                {'label': '02127 (Boston-East)', 'value': 2127},
+                {'label': '02129 (Boston-North)', 'value': 2129},
+                {'label': '02215 (Boston-West)', 'value': 2215},
 
-            {'label': '10001 (NYC-Manhattan)', 'value': 10001},
-            {'label': '10302 (NYC-Staten Island)', 'value': 10302},
-            {'label': '10453 (NYC-Bronx)', 'value': 10453},
-            {'label': '11212 (NYC-Brooklyn)', 'value': 11212},
-            {'label': '11361 (NYC-Queens)', 'value': 11361},
+                {'label': '10001 (NYC-Manhattan)', 'value': 10001},
+                {'label': '10302 (NYC-Staten Island)', 'value': 10302},
+                {'label': '10453 (NYC-Bronx)', 'value': 10453},
+                {'label': '11212 (NYC-Brooklyn)', 'value': 11212},
+                {'label': '11361 (NYC-Queens)', 'value': 11361},
 
-            {'label': '20001 (DC-Central)', 'value': 20001},
-            {'label': '20003 (DC-South)', 'value': 20003},
-            {'label': '20007 (DC-West)', 'value': 20007},
-            {'label': '20011 (DC-North)', 'value': 20011},
-            {'label': '20018 (DC-East)', 'value': 20018},
+                {'label': '20001 (DC-Central)', 'value': 20001},
+                {'label': '20003 (DC-South)', 'value': 20003},
+                {'label': '20007 (DC-West)', 'value': 20007},
+                {'label': '20011 (DC-North)', 'value': 20011},
+                {'label': '20018 (DC-East)', 'value': 20018},
 
-            {'label': '60601 (Chicago)', 'value': 60617},
-            {'label': '60044 (Chicago-North)', 'value': 60044},
-            {'label': '60185 (Chicago-West)', 'value': 60185},
-            {'label': '60617 (Chicago-South)', 'value': 60617},
+                {'label': '60601 (Chicago)', 'value': 60601},
+                {'label': '60044 (Chicago-North)', 'value': 60044},
+                {'label': '60185 (Chicago-West)', 'value': 60185},
+                {'label': '60617 (Chicago-South)', 'value': 60617},
 
-            {'label': '90001 (LA-South)', 'value': 90001},
-            {'label': '90004 (LA-Central)', 'value': 90004},
-            {'label': '90022 (LA-East)', 'value': 90022},
-            {'label': '90024 (LA-West)', 'value': 90024},
-            {'label': '90031 (LA-North)', 'value': 90031},
+                {'label': '90001 (LA-South)', 'value': 90001},
+                {'label': '90004 (LA-Central)', 'value': 90004},
+                {'label': '90022 (LA-East)', 'value': 90022},
+                {'label': '90024 (LA-West)', 'value': 90024},
+                {'label': '90031 (LA-North)', 'value': 90031},
 
-            {'label': '94015 (SF-South)', 'value': 94015},
-            {'label': '94103 (SF-East)', 'value': 94103},
-            {'label': '94104 (SF-Central)', 'value': 94104},
-            {'label': '94111 (SF-North)', 'value': 94111},
-            {'label': '94116 (SF-West)', 'value': 94116},
+                {'label': '94015 (SF-South)', 'value': 94015},
+                {'label': '94103 (SF-East)', 'value': 94103},
+                {'label': '94104 (SF-Central)', 'value': 94104},
+                {'label': '94111 (SF-North)', 'value': 94111},
+                {'label': '94116 (SF-West)', 'value': 94116},
 
 
-        ],
-        placeholder="Zipcode"
+            ],
+            placeholder="Zipcode"
         ),
 
         html.Br(),
         html.Br(),
         html.Br(),
-        ### NEED TO UPDATE VALUES
         dcc.Dropdown(
             id="property_type",
             options=[
-                {'label': 'Apartment', 'value': 'Apartment'},
-                {'label': 'House', 'value': 'House'},
-                {'label': 'Condominium', 'value': 'Condominium'},
-                {'label': 'Townhouse', 'value': 'Townhouse'},
-                {'label': 'Loft', 'value': 'Loft'},
-                {'label': 'Guesthouse', 'value': 'Guesthouse'},
-                {'label': 'Bed & Breakfast', 'value': 'Bed & Breakfast'},
-                {'label': 'Bungalow', 'value': 'Bungalow'},
-                {'label': 'Villa', 'value': 'Villa'},
-                {'label': 'Dorm', 'value': 'Dorm'},
-                {'label': 'Guest suite', 'value': 'Guest suite'},
-                {'label': 'Camper/RV', 'value': 'SF'},
-                {'label': 'Timeshare', 'value': 'NYC'},
-                {'label': 'Cabin', 'value': 'MTL'},
-                {'label': 'In-law', 'value': 'SF'},
-                {'label': 'Hostel', 'value': 'NYC'},
-                {'label': 'Boutique hotel', 'value': 'MTL'},
-                {'label': 'Boat', 'value': 'SF'},
-                {'label': 'Serviced apartment', 'value': 'NYC'},
-                {'label': 'Tent', 'value': 'MTL'},
-                {'label': 'Castle', 'value': 'SF'},
-                {'label': 'Vacation home', 'value': 'NYC'},
-                {'label': 'Yurt', 'value': 'MTL'},
-                {'label': 'Hut', 'value': 'SF'},
-                {'label': 'Treehouse', 'value': 'NYC'},
-                {'label': 'Chalet', 'value': 'MTL'},
-                {'label': 'Earth House', 'value': 'SF'},
-                {'label': 'Tipi', 'value': 'NYC'},
-                {'label': 'Train', 'value': 'MTL'},
-                {'label': 'Cave', 'value': 'SF'},
-                {'label': 'Island', 'value': 'NYC'},
-                {'label': 'Lighthouse', 'value': 'MTL'},
-                {'label': 'Parking Space', 'value': 'SF'},
-                {'label': 'Casa particular', 'value': 'NYC'},
-                {'label': 'Other', 'value': 'MTL'}
+                {'label': 'Apartment', 'value': 0},
+                {'label': 'House', 'value': 16},
+                {'label': 'Condominium', 'value': 10},
+                {'label': 'Townhouse', 'value': 25},
+                {'label': 'Loft', 'value': 19},
+                {'label': 'Guesthouse', 'value': 14},
+                {'label': 'Bed & Breakfast', 'value': 1},
+                {'label': 'Bungalow', 'value': 4},
+                {'label': 'Villa', 'value': 29},
+                {'label': 'Dorm', 'value': 11},
+                {'label': 'Guest suite', 'value': 13},
+                {'label': 'Camper/RV', 'value': 6},
+                {'label': 'Timeshare', 'value': 23},
+                {'label': 'Cabin', 'value': 5},
+                {'label': 'In-law', 'value': 18},
+                {'label': 'Hostel', 'value': 15},
+                {'label': 'Boutique hotel', 'value': 3},
+                {'label': 'Boat', 'value': 2},
+                {'label': 'Serviced apartment', 'value': 21},
+                {'label': 'Tent', 'value': 22},
+                {'label': 'Castle', 'value': 7},
+                {'label': 'Vacation home', 'value': 28},
+                {'label': 'Yurt', 'value': 30},
+                {'label': 'Hut', 'value': 17},
+                {'label': 'Treehouse', 'value': 27},
+                {'label': 'Chalet', 'value': 9},
+                {'label': 'Earth House', 'value': 12},
+                {'label': 'Tipi', 'value': 24},
+                {'label': 'Train', 'value': 26},
+                {'label': 'Cave', 'value': 8},
+                # {'label': 'Island', 'value': 'NYC'},
+                # {'label': 'Lighthouse', 'value': 'MTL'},
+                # {'label': 'Parking Space', 'value': 'SF'},
+                # {'label': 'Casa particular', 'value': 'NYC'},
+                {'label': 'Other', 'value': 20}
             ],
             placeholder="Property Type"
         ),
@@ -157,7 +155,6 @@ column1 = dbc.Col([
         html.Br(),
         html.Br(),
         html.Br(),
-        ## UPDATE INSTANT BOOKABLE VALUES
         dcc.Dropdown(
             id='instant_bookable',
             options=[
@@ -187,9 +184,9 @@ column1 = dbc.Col([
         dcc.Dropdown(
         id='cancellation_policy',
         options=[
-            {'label': 'strict', 'value': 0},
-            {'label': 'flexible', 'value': 1},
-            {'label': 'moderate', 'value': 2},
+            {'label': 'strict', 'value': 2},
+            {'label': 'flexible', 'value': 0},
+            {'label': 'moderate', 'value': 1},
             {'label': 'super_strict_30', 'value': 3},
             {'label': 'super_strict_60', 'value': 4}
         ],
@@ -213,7 +210,6 @@ column1 = dbc.Col([
     ],
     md=4,
 )
-# ])
 
 column2 = dbc.Col(
     [   
@@ -223,7 +219,6 @@ column2 = dbc.Col(
         html.Br(),
         html.Br(),
         html.Br(),
-        ## UPDATE ROOM TYPE VALUES
         dcc.Dropdown(
             id='room_type',
             options=[
@@ -237,15 +232,14 @@ column2 = dbc.Col(
 
         html.Br(),
         html.Br(),
-        ## UPDATE BED TYPE VALUES
         dcc.Dropdown(
             id='bed_type',
             options=[
-                {'label': 'Real bed', 'value': 0},
-                {'label': 'Futon', 'value': 1},
-                {'label': 'Pull-out Sofa', 'value': 2},
-                {'label': 'Airbed', 'value': 3},
-                {'label': 'Couch', 'value': 4},
+                {'label': 'Real bed', 'value': 4},
+                {'label': 'Futon', 'value': 2},
+                {'label': 'Pull-out Sofa', 'value': 3},
+                {'label': 'Airbed', 'value': 0},
+                {'label': 'Couch', 'value': 1},
             ],
             placeholder="Bed Type"
         ),
@@ -346,11 +340,6 @@ column2 = dbc.Col(
 def create_observation(host_since, property_type, room_type, accommodates, bathrooms,
                        bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
                        instant_bookable, review_scores_rating, bedrooms, beds, zipcode, n_clicks):
-
-    # container = f"""Host since:{host_since} Property type:{property_type} Room type:{room_type} Accommodates:{accommodates}
-    #                 Bathrooms:{bathrooms} Bed type:{bed_type} Cancellation policy:{cancellation_policy} Cleaning fee:{cleaning_fee}
-    #                 City:{city} Host identity verified:{host_identity_verified} Instant bookable:{instant_bookable}
-    #                 Review scores rating:{review_scores_rating} Bedrooms:{bedrooms} Beds:{beds} Zipcode:{zipcode}"""
     
     # 2d, numpy array exactly the same way as the DF the model trained on.
     # sklearn pipeline to format data automatically
