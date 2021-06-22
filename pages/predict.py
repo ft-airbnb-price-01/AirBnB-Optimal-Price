@@ -3,8 +3,9 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from datetime import date
+
 
 # Imports from this application
 from app import app
@@ -159,9 +160,6 @@ column1 = dbc.Col([
 
 
 
-
-
-
     ],
     md=4,
 )
@@ -174,6 +172,18 @@ column2 = dbc.Col(
         html.Br(),
         html.Br(),
         html.Br(),
+
+        dcc.DatePickerSingle(
+            id='host_since',
+            min_date_allowed=date(2008, 3, 1),
+            max_date_allowed=date(2021, 5, 31),
+            initial_visible_month=date(2021, 5, 31),
+            placeholder="Host Since"
+        ),
+
+        html.Br(),
+        html.Br(),
+        html.Br(),
         dcc.Dropdown(
         id='cancellation_policy',
         options=[
@@ -181,20 +191,9 @@ column2 = dbc.Col(
             {'label': 'flexible', 'value': 1},
             {'label': 'moderate', 'value': 2},
             {'label': 'super_strict_30', 'value': 3},
-            {'label': 'super_strict_60', 'value': 4},
+            {'label': 'super_strict_60', 'value': 4}
         ],
         placeholder="Cancellation Policy"
-        ),
-
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        dcc.DatePickerSingle(
-            id='host_since',
-            min_date_allowed=date(2008, 3, 1),
-            max_date_allowed=date(2021, 5, 31),
-            initial_visible_month=date(2021, 5, 31),
-            placeholder="Host Since"
         ),
 
         html.Br(),
@@ -221,7 +220,20 @@ column2 = dbc.Col(
                 {'label': 'False', 'value': 1}
             ],
             placeholder="Host Identity Verified"
-        )
+        ),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+
+        html.Div([
+            dbc.Button(
+                id="button",
+                n_clicks=0,
+                children="Submit"
+            )
+        ]),
+
+        html.Div(id="output_container")
 
 
 
@@ -229,4 +241,37 @@ column2 = dbc.Col(
     md=4,
 )
 
+@app.callback(
+    Output("output_container", 'children'),
+    [Input('button', 'n_clicks')],
+    [State('accommodates', 'value'),
+    State('bedrooms', 'value'),
+    State('beds', 'value'),
+    State('bathrooms', 'value'),
+    State('review_scores_rating', 'value'),
+    State('cleaning_fee', 'value'),
+    State('property_type', 'value'),
+    State('room_type', 'value'),
+    State('bed_type', 'value'),
+    State('host_since', 'date'),
+    State('cancellation_policy', 'value'),
+    State('instant_bookable', 'value'),
+    State('host_identity_verified', 'value')]
+)
+
+def create_observation(accommodates, bedrooms, beds, bathrooms, review_scores_rating, cleaning_fee,
+                       property_type, room_type, bed_type, host_since, cancellation_policy, instant_bookable,
+                       host_identity_verified, n_clicks):
+
+    # 2d, numpy array exactly the same way as the DF the model trained on.
+    # sklearn pipeline to format data automatically
+    container = f"""{accommodates}{bedrooms}{beds}{bathrooms}{review_scores_rating}{cleaning_fee}
+                    {property_type}{room_type}{bed_type}{host_since}{cancellation_policy}
+                    {instant_bookable}{host_identity_verified}"""
+    
+    return container
+
+
 layout = dbc.Row([column1, column2])
+
+
