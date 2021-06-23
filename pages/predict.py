@@ -1,11 +1,18 @@
+"""Handles `Predictions` page where users input attributes of a listing and returns a predicted price of that listing"""
+
 # Imports from 3rd party libraries
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
-from datetime import date
+from datetime import datetime, date, timezone
+import calendar
 import numpy as np
+import pytz
+
+from .prediction import make_prediction
+from dash.exceptions import PreventUpdate
 
 
 # Imports from this application
@@ -311,17 +318,15 @@ column2 = dbc.Col(
 
         html.Div(id="output_container")
 
-
-
     ],
     md=4,
 )
 
 @app.callback(
     Output("output_container", 'children'),
-    [Input('button', 'n_clicks')],
-    [State('host_since', 'date'),
-    State('property_type', 'value'),
+    [Input('host_since', 'date'),
+     Input('button', 'n_clicks')],
+    [State('property_type', 'value'),
     State('room_type', 'value'),
     State('accommodates', 'value'),
     State('bathrooms', 'value'),
@@ -332,22 +337,42 @@ column2 = dbc.Col(
     State('host_identity_verified', 'value'),
     State('instant_bookable', 'value'),
     State('review_scores_rating', 'value'),
+    State('zipcode', 'value'),
     State('bedrooms', 'value'),
-    State('beds', 'value'),
-    State('zipcode', 'value')]
+    State('beds', 'value')]
 )
 
 def create_observation(host_since, property_type, room_type, accommodates, bathrooms,
                        bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
-                       instant_bookable, review_scores_rating, bedrooms, beds, zipcode, n_clicks):
+                       instant_bookable, review_scores_rating, zipcode, bedrooms, beds, n_clicks):
     
     # 2d, numpy array exactly the same way as the DF the model trained on.
     # sklearn pipeline to format data automatically
-    container = np.array([host_since, property_type, room_type, accommodates, bathrooms,
-                       bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
-                       instant_bookable, review_scores_rating, bedrooms, beds, zipcode, n_clicks])
 
-    return container
+    datetime_obj = datetime.strptime("2021-05-25", "%Y-%m-%d")
+    timestamp = calendar.timegm(datetime_obj.timetuple())
+    dt = datetime.utcfromtimestamp(timestamp)
+    utc_timestamp_seconds = dt.replace(tzinfo=timezone.utc).timestamp()
+    utc_timestamp_days = utc_timestamp_seconds / 86400
+    
+    if n_clicks is None:
+        raise PreventUpdate
+    else:
+        # container = np.array([[utc_timestamp_days]])
+        # container_2 = np.array([[property_type, room_type, accommodates, bathrooms,
+        #                 bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
+        #                 instant_bookable, review_scores_rating, zipcode, bedrooms, beds]]).astype(np.int)
+        # final_container = np.concatenate(container, container_2)
+        # prediction = make_prediction(final_container)
 
+        final_container = np.array([[utc_timestamp_days, property_type, room_type, accommodates, bathrooms,
+                        bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
+                        instant_bookable, review_scores_rating, zipcode, bedrooms, beds]]).astype(np.int)
+
+        prediction = make_prediction(final_container)
+
+    return prediction
+
+    # print(type(utc_timestamp_days))
 
 layout = dbc.Row([column1, column2])

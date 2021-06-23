@@ -10,6 +10,7 @@ gunicorn = "*"
 plotly = "*"
 pandas = "*"
 colorama = "*"
+tensorflow = "*"
 
 [dev-packages]
 
