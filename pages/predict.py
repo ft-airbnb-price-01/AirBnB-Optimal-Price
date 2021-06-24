@@ -349,11 +349,12 @@ def create_observation(host_since, property_type, room_type, accommodates, bathr
     # 2d, numpy array exactly the same way as the DF the model trained on.
     # sklearn pipeline to format data automatically
 
-    datetime_obj = datetime.strptime("2021-05-25", "%Y-%m-%d")
-    timestamp = calendar.timegm(datetime_obj.timetuple())
-    dt = datetime.utcfromtimestamp(timestamp)
-    utc_timestamp_seconds = dt.replace(tzinfo=timezone.utc).timestamp()
-    utc_timestamp_days = utc_timestamp_seconds / 86400
+    if host_since is not None:
+        datetime_obj = datetime.strptime(host_since, "%Y-%m-%d")
+        # timestamp = calendar.timegm(datetime_obj.timetuple())
+        # dt = datetime.utcfromtimestamp(timestamp)
+        utc_timestamp_seconds = datetime_obj.replace(tzinfo=timezone.utc).timestamp()
+        utc_timestamp_days = utc_timestamp_seconds / 86400
     
     if n_clicks is None:
         raise PreventUpdate
@@ -371,8 +372,8 @@ def create_observation(host_since, property_type, room_type, accommodates, bathr
 
         prediction = make_prediction(final_container)
 
-    return prediction
+    print (prediction)
 
-    # print(type(utc_timestamp_days))
+    # print(prediction)
 
 layout = dbc.Row([column1, column2])
