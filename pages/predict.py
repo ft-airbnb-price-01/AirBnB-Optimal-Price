@@ -372,7 +372,7 @@ def create_observation(host_since, property_type, room_type, accommodates, bathr
 
         prediction = make_prediction(final_container)
 
-    print (prediction)
+    return prediction
 
     # print(prediction)
 
