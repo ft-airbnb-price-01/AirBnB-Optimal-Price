@@ -1,1 +1,1 @@
-web: gunicorn app:server -t 180
+web: gunicorn index:server -t 180
