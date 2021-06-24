@@ -1,4 +1,5 @@
-"""Handles `Predictions` page where users input attributes of a listing and returns a predicted price of that listing"""
+"""Handles `Predictions` page where users input attributes of a listing and
+returns a predicted price per night of that listing"""
 
 # Imports from 3rd party libraries
 import dash
@@ -10,7 +11,6 @@ from datetime import datetime, date, timezone
 import calendar
 import numpy as np
 import pytz
-
 from .prediction import make_prediction
 from dash.exceptions import PreventUpdate
 
@@ -20,8 +20,6 @@ from app import app
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
-
-# app.layout = html.Div([
 
 column1 = dbc.Col([
         html.Br(),
@@ -51,23 +49,23 @@ column1 = dbc.Col([
             ],
             placeholder="Host Identity Verified"
         ),
-        
+
         html.Br(),
         html.Br(),
         html.Br(),
         dcc.Dropdown(
-        id='city',
-        options=[
-            {'label': 'Boston', 'value': 0},
-            {'label': 'New York City', 'value': 4},
-            {'label': 'Washington, DC', 'value': 2},
-            {'label': 'Chicago', 'value': 1},
-            {'label': 'Los Angeles', 'value': 3},
-            {'label': 'San Francisco', 'value': 5}
-        ],
-        placeholder="City"
+            id='city',
+            options=[
+                {'label': 'Boston', 'value': 0},
+                {'label': 'New York City', 'value': 4},
+                {'label': 'Washington, DC', 'value': 2},
+                {'label': 'Chicago', 'value': 1},
+                {'label': 'Los Angeles', 'value': 3},
+                {'label': 'San Francisco', 'value': 5}
+            ],
+            placeholder="City"
         ),
-        
+
         html.Br(),
         html.Br(),
         html.Br(),
@@ -109,7 +107,6 @@ column1 = dbc.Col([
                 {'label': '94111 (SF-North)', 'value': 94111},
                 {'label': '94116 (SF-West)', 'value': 94116},
 
-
             ],
             placeholder="Zipcode"
         ),
@@ -150,10 +147,6 @@ column1 = dbc.Col([
                 {'label': 'Tipi', 'value': 24},
                 {'label': 'Train', 'value': 26},
                 {'label': 'Cave', 'value': 8},
-                # {'label': 'Island', 'value': 'NYC'},
-                # {'label': 'Lighthouse', 'value': 'MTL'},
-                # {'label': 'Parking Space', 'value': 'SF'},
-                # {'label': 'Casa particular', 'value': 'NYC'},
                 {'label': 'Other', 'value': 20}
             ],
             placeholder="Property Type"
@@ -189,15 +182,15 @@ column1 = dbc.Col([
         html.Br(),
 
         dcc.Dropdown(
-        id='cancellation_policy',
-        options=[
-            {'label': 'strict', 'value': 2},
-            {'label': 'flexible', 'value': 0},
-            {'label': 'moderate', 'value': 1},
-            {'label': 'super_strict_30', 'value': 3},
-            {'label': 'super_strict_60', 'value': 4}
-        ],
-        placeholder="Cancellation Policy"
+            id='cancellation_policy',
+            options=[
+                {'label': 'strict', 'value': 2},
+                {'label': 'flexible', 'value': 0},
+                {'label': 'moderate', 'value': 1},
+                {'label': 'super_strict_30', 'value': 3},
+                {'label': 'super_strict_60', 'value': 4}
+            ],
+            placeholder="Cancellation Policy"
         ),
 
         html.Br(),
@@ -213,13 +206,12 @@ column1 = dbc.Col([
             )
         ]),
 
-
     ],
     md=4,
 )
 
 column2 = dbc.Col(
-    [   
+    [
         html.Br(),
         html.Br(),
         html.Br(),
@@ -236,7 +228,6 @@ column2 = dbc.Col(
             placeholder="Room Type"
         ),
 
-
         html.Br(),
         html.Br(),
         dcc.Dropdown(
@@ -251,14 +242,13 @@ column2 = dbc.Col(
             placeholder="Bed Type"
         ),
 
-
         html.Br(),
         html.Br(),
         html.Br(),
         dcc.Input(
-            id = "accommodates",
-            placeholder = "# Accommodates",
-            type = "number"
+            id="accommodates",
+            placeholder="# Accommodates",
+            type="number"
         ),
 
         html.Br(),
@@ -267,21 +257,9 @@ column2 = dbc.Col(
         html.Br(),
 
         dcc.Input(
-            id = "bedrooms",
-            placeholder = "# Bedrooms",
-            type = "number"
-        ),
-
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        
-
-        dcc.Input(
-            id = "beds",
-            placeholder = "# Beds",
-            type = "number"
+            id="bedrooms",
+            placeholder="# Bedrooms",
+            type="number"
         ),
 
         html.Br(),
@@ -290,9 +268,9 @@ column2 = dbc.Col(
         html.Br(),
 
         dcc.Input(
-            id = "bathrooms",
-            placeholder = "# Bathrooms",
-            type = "number"
+            id="beds",
+            placeholder="# Beds",
+            type="number"
         ),
 
         html.Br(),
@@ -301,9 +279,20 @@ column2 = dbc.Col(
         html.Br(),
 
         dcc.Input(
-            id = "review_scores_rating",
-            placeholder = "Review Score Rating (0-100)",
-            type = "number"
+            id="bathrooms",
+            placeholder="# Bathrooms",
+            type="number"
+        ),
+
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+
+        dcc.Input(
+            id="review_scores_rating",
+            placeholder="Review Score Rating (0-100)",
+            type="number"
         ),
 
         html.Br(),
@@ -322,58 +311,52 @@ column2 = dbc.Col(
     md=4,
 )
 
+
 @app.callback(
     Output("output_container", 'children'),
     [Input('host_since', 'date'),
      Input('button', 'n_clicks')],
     [State('property_type', 'value'),
-    State('room_type', 'value'),
-    State('accommodates', 'value'),
-    State('bathrooms', 'value'),
-    State('bed_type', 'value'),
-    State('cancellation_policy', 'value'),
-    State('cleaning_fee', 'value'),
-    State('city', 'value'),
-    State('host_identity_verified', 'value'),
-    State('instant_bookable', 'value'),
-    State('review_scores_rating', 'value'),
-    State('zipcode', 'value'),
-    State('bedrooms', 'value'),
-    State('beds', 'value')]
+     State('room_type', 'value'),
+     State('accommodates', 'value'),
+     State('bathrooms', 'value'),
+     State('bed_type', 'value'),
+     State('cancellation_policy', 'value'),
+     State('cleaning_fee', 'value'),
+     State('city', 'value'),
+     State('host_identity_verified', 'value'),
+     State('instant_bookable', 'value'),
+     State('review_scores_rating', 'value'),
+     State('zipcode', 'value'),
+     State('bedrooms', 'value'),
+     State('beds', 'value')]
 )
 
-def create_observation(host_since, property_type, room_type, accommodates, bathrooms,
-                       bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
-                       instant_bookable, review_scores_rating, zipcode, bedrooms, beds, n_clicks):
-    
-    # 2d, numpy array exactly the same way as the DF the model trained on.
-    # sklearn pipeline to format data automatically
+
+def create_observation(host_since, property_type, room_type, accommodates,
+                       bathrooms, bed_type, cancellation_policy, cleaning_fee,
+                       city, host_identity_verified, instant_bookable,
+                       review_scores_rating, zipcode, bedrooms, beds,
+                       n_clicks):
 
     if host_since is not None:
         datetime_obj = datetime.strptime(host_since, "%Y-%m-%d")
-        # timestamp = calendar.timegm(datetime_obj.timetuple())
-        # dt = datetime.utcfromtimestamp(timestamp)
         utc_timestamp_seconds = datetime_obj.replace(tzinfo=timezone.utc).timestamp()
         utc_timestamp_days = utc_timestamp_seconds / 86400
-    
+
     if n_clicks is None:
         raise PreventUpdate
     else:
-        # container = np.array([[utc_timestamp_days]])
-        # container_2 = np.array([[property_type, room_type, accommodates, bathrooms,
-        #                 bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
-        #                 instant_bookable, review_scores_rating, zipcode, bedrooms, beds]]).astype(np.int)
-        # final_container = np.concatenate(container, container_2)
-        # prediction = make_prediction(final_container)
 
-        final_container = np.array([[utc_timestamp_days, property_type, room_type, accommodates, bathrooms,
-                        bed_type, cancellation_policy, cleaning_fee, city, host_identity_verified,
-                        instant_bookable, review_scores_rating, zipcode, bedrooms, beds]]).astype(np.int)
+        input_arr = np.array([[utc_timestamp_days, property_type, room_type,
+                               accommodates, bathrooms, bed_type,
+                               cancellation_policy, cleaning_fee, city,
+                               host_identity_verified, instant_bookable,
+                               review_scores_rating, zipcode, bedrooms,
+                               beds]]).astype(np.int)
 
-        prediction = make_prediction(final_container)
+        prediction = make_prediction(input_arr)
 
     return prediction
-
-    # print(prediction)
 
 layout = dbc.Row([column1, column2])
