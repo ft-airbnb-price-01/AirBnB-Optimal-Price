@@ -8,15 +8,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 from datetime import datetime, date, timezone
+from dash.exceptions import PreventUpdate
 import calendar
 import numpy as np
 import pytz
-from .prediction import make_prediction
-from dash.exceptions import PreventUpdate
-
-
 # Imports from this application
 from app import app
+from .prediction import make_prediction
+
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
