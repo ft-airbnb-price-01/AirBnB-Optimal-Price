@@ -1,6 +1,6 @@
 # AirBnB-Optimal-Price
 
-Click[Our Product Vision Here](https://docs.google.com/document/d/1OvequO0kK5dJZIkCUqQgHysbUKwPrAQn2oCjlpLD7AE/edit?usp=sharing)
+[Our Product Vision Here](https://docs.google.com/document/d/1OvequO0kK5dJZIkCUqQgHysbUKwPrAQn2oCjlpLD7AE/edit?usp=sharing)
 
 # What our app does #
 Our Airbnb app will return the optimal price for listings based on specific features such as location, property type, review rating score, host verification, bedrooms/bathrooms, amenities, accommodations, etc. It solves the problem by predicting how certain features affect the price of a listing.
@@ -15,14 +15,14 @@ Our Airbnb app will return the optimal price for listings based on specific feat
 
 
 ### Dependent Packages ###
-Dash- Click[Documentation Attached](https://dash.plotly.com/installation)
-Dash-bootstrap-components- Click[Documentation Attached](https://dash-bootstrap-components.opensource.faculty.ai/)
-gunicorn- Click[Documentation Attached](https://docs.gunicorn.org/en/stable/install.html)
-plotly- Click[Documentation Attached](https://plotly.com/python/getting-started/)
-pandas- Click[Documentation Attached](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
-colorama- Click[Documentation Attached](https://pypi.org/project/colorama/)
-tensorflow-cpu - Click[Documentation Attached](https://www.tensorflow.org/install/pip)
-python_version = 3.9 - Click[Documentation Attached](https://www.python.org/downloads/)
+Dash-[Documentation Attached](https://dash.plotly.com/installation)
+Dash-bootstrap-components-[Documentation Attached](https://dash-bootstrap-components.opensource.faculty.ai/)
+gunicorn-[Documentation Attached](https://docs.gunicorn.org/en/stable/install.html)
+plotly-[Documentation Attached](https://plotly.com/python/getting-started/)
+pandas-[Documentation Attached](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+colorama-[Documentation Attached](https://pypi.org/project/colorama/)
+tensorflow-cpu -[Documentation Attached](https://www.tensorflow.org/install/pip)
+python_version = 3.9 -[Documentation Attached](https://www.python.org/downloads/)
 
 ***Contribute to our app by:*** 
 
@@ -35,5 +35,5 @@ python_version = 3.9 - Click[Documentation Attached](https://www.python.org/down
 Alternatively see the GitHub documentation on creating a pull request.
 
 #### CONTRIBUTORS ####
-Click[@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
-Click[@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
+[@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
+[@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
