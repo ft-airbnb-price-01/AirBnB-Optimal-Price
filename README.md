@@ -15,14 +15,14 @@ Our Airbnb app will return the optimal price for listings based on specific feat
 
 
 ### Dependent Packages ###
-Markup :    *Dash-[Documentation Attached](https://dash.plotly.com/installation)
-            *Dash-bootstrap-components-[Documentation Attached](https://dash-bootstrap-components.opensource.faculty.ai/)
-            *Gunicorn-[Documentation Attached](https://docs.gunicorn.org/en/stable/install.html)
-            *Plotly-[Documentation Attached](https://plotly.com/python/getting-started/)
-            *Pandas-[Documentation Attached](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
-            *Colorama-[Documentation Attached](https://pypi.org/project/colorama/)
-            *Tensor-flow-cpu-[Documentation Attached](https://www.tensorflow.org/install/pip)
-            *Python_version = 3.9 -[Documentation Attached](https://www.python.org/downloads/)
+* Dash-[Documentation Attached](https://dash.plotly.com/installation)
+* Dash-bootstrap-components-[Documentation Attached](https://dash-bootstrap-components.opensource.faculty.ai/)
+* Gunicorn-[Documentation Attached](https://docs.gunicorn.org/en/stable/install.html)
+* Plotly-[Documentation Attached](https://plotly.com/python/getting-started/)
+* Pandas-[Documentation Attached](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+* Colorama-[Documentation Attached](https://pypi.org/project/colorama/)
+* Tensor-flow-cpu-[Documentation Attached](https://www.tensorflow.org/install/pip)
+* Python_version = 3.9 -[Documentation Attached](https://www.python.org/downloads/)
 
 ***Contribute to our app by:*** 
 
@@ -35,5 +35,5 @@ Markup :    *Dash-[Documentation Attached](https://dash.plotly.com/installation)
 Alternatively see the GitHub documentation on creating a pull request.
 
 #### CONTRIBUTORS ####
-Markup : - [@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
-         - [@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
+- [@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
+- [@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
