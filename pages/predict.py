@@ -154,47 +154,6 @@ column1 = dbc.Col([
         html.Br(),
         html.Br(),
         html.Br(),
-        dcc.Dropdown(
-            id='instant_bookable',
-            options=[
-                {'label': 'True', 'value': 1},
-                {'label': 'False', 'value': 0}
-            ],
-            placeholder="Instantly Bookable"
-        ),
-
-        html.Br(),
-        html.Br(),
-        html.Br(),
-
-        dcc.Dropdown(
-            id='cleaning_fee',
-            options=[
-                {'label': 'Yes', 'value': 1},
-                {'label': 'No', 'value': 0}
-            ],
-            placeholder="Cleaning Fee"
-        ),
-
-        html.Br(),
-        html.Br(),
-        html.Br(),
-
-        dcc.Dropdown(
-            id='cancellation_policy',
-            options=[
-                {'label': 'strict', 'value': 2},
-                {'label': 'flexible', 'value': 0},
-                {'label': 'moderate', 'value': 1},
-                {'label': 'super_strict_30', 'value': 3},
-                {'label': 'super_strict_60', 'value': 4}
-            ],
-            placeholder="Cancellation Policy"
-        ),
-
-        html.Br(),
-        html.Br(),
-        html.Br(),
 
         html.Div([
             dbc.Button(
@@ -244,12 +203,75 @@ column2 = dbc.Col(
         html.Br(),
         html.Br(),
         html.Br(),
+        dcc.Dropdown(
+            id='instant_bookable',
+            options=[
+                {'label': 'True', 'value': 1},
+                {'label': 'False', 'value': 0}
+            ],
+            placeholder="Instantly Bookable"
+        ),
+
+        html.Br(),
+        html.Br(),
+        html.Br(),
+
+        dcc.Dropdown(
+            id='cleaning_fee',
+            options=[
+                {'label': 'Yes', 'value': 1},
+                {'label': 'No', 'value': 0}
+            ],
+            placeholder="Cleaning Fee"
+        ),
+
+        html.Br(),
+        html.Br(),
+        html.Br(),
+
+        dcc.Dropdown(
+            id='cancellation_policy',
+            options=[
+                {'label': 'strict', 'value': 2},
+                {'label': 'flexible', 'value': 0},
+                {'label': 'moderate', 'value': 1},
+                {'label': 'super_strict_30', 'value': 3},
+                {'label': 'super_strict_60', 'value': 4}
+            ],
+            placeholder="Cancellation Policy"
+        ),
+
+        
+
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+
+        html.Div(id="output_container")
+
+    ],
+    md=4,
+)
+
+column3 = dbc.Col(
+    [
+        html.Br(),
+        html.Br(),
+        html.Br(),html.Br(),
+        html.Br(),
+        html.Br(),
         dcc.Input(
             id="accommodates",
             placeholder="# Accommodates",
             type="number"
         ),
-
+        
         html.Br(),
         html.Br(),
         html.Br(),
@@ -294,22 +316,10 @@ column2 = dbc.Col(
             type="number"
         ),
 
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-
-        html.Div(id="output_container")
-
     ],
-    md=4,
-)
+    md=4
 
+)
 
 @app.callback(
     Output("output_container", 'children'),
@@ -358,4 +368,4 @@ def create_observation(host_since, property_type, room_type, accommodates,
 
     return prediction
 
-layout = dbc.Row([column1, column2])
+layout = dbc.Row([column1, column2, column3])
