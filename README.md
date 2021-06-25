@@ -15,7 +15,7 @@ Our Airbnb app will return the optimal price for listings based on specific feat
 
 
 ### Dependent Packages ###
-markup :    *Dash-[Documentation Attached](https://dash.plotly.com/installation)
+Markup :    *Dash-[Documentation Attached](https://dash.plotly.com/installation)
             *Dash-bootstrap-components-[Documentation Attached](https://dash-bootstrap-components.opensource.faculty.ai/)
             *Gunicorn-[Documentation Attached](https://docs.gunicorn.org/en/stable/install.html)
             *Plotly-[Documentation Attached](https://plotly.com/python/getting-started/)
@@ -35,5 +35,5 @@ markup :    *Dash-[Documentation Attached](https://dash.plotly.com/installation)
 Alternatively see the GitHub documentation on creating a pull request.
 
 #### CONTRIBUTORS ####
-markup :    *[@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
+Markup :    *[@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
             *[@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
