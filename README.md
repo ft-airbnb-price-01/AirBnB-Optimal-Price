@@ -35,5 +35,5 @@ Markup :    *Dash-[Documentation Attached](https://dash.plotly.com/installation)
 Alternatively see the GitHub documentation on creating a pull request.
 
 #### CONTRIBUTORS ####
-Markup :    *[@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
-            *[@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
+Markup : - [@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
+         - [@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
