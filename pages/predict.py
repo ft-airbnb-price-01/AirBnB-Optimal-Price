@@ -351,13 +351,13 @@ def create_observation(host_since, property_type, room_type, accommodates,
     if host_since is not None:
         datetime_obj = datetime.strptime(host_since, "%Y-%m-%d")
         utc_timestamp_seconds = datetime_obj.replace(tzinfo=timezone.utc).timestamp()
-        utc_timestamp_days = utc_timestamp_seconds / 86400
+        utc_timestamp = utc_timestamp_seconds / 86400
 
     if n_clicks is None:
         raise PreventUpdate
     else:
 
-        input_arr = np.array([[utc_timestamp_days, property_type, room_type,
+        input_arr = np.array([[utc_timestamp, property_type, room_type,
                                accommodates, bathrooms, bed_type,
                                cancellation_policy, cleaning_fee, city,
                                host_identity_verified, instant_bookable,
@@ -365,7 +365,7 @@ def create_observation(host_since, property_type, room_type, accommodates,
                                beds]]).astype(np.int)
 
         prediction = make_prediction(input_arr)
-
+        
     return prediction
 
 layout = dbc.Row([column1, column2, column3])
