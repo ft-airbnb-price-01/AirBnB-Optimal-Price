@@ -1,6 +1,5 @@
 """Handles `Predictions` page where users input attributes of a listing and
 returns a predicted price per night of that listing"""
-
 # Imports from 3rd party libraries
 import dash
 import dash_bootstrap_components as dbc
@@ -10,8 +9,13 @@ from dash.dependencies import Input, Output, State
 from datetime import datetime, date, timezone
 from dash.exceptions import PreventUpdate
 import calendar
+from dash_html_components.Data import Data
 import numpy as np
 import pytz
+import plotly.express as px
+from pandas import DataFrame
+from plotly.subplots import make_subplots
+
 # Imports from this application
 from app import app
 from .prediction import make_prediction
@@ -19,6 +23,7 @@ from .prediction import make_prediction
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
+
 
 column1 = dbc.Col([
         html.Br(),
@@ -28,7 +33,6 @@ column1 = dbc.Col([
             Input data about your listing to get a predicted price per night.
             """
         ),
-
         dcc.DatePickerSingle(
             id='host_since',
             min_date_allowed=date(2008, 3, 1),
@@ -36,7 +40,6 @@ column1 = dbc.Col([
             initial_visible_month=date(2021, 5, 31),
             placeholder="Host Since"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
@@ -48,7 +51,6 @@ column1 = dbc.Col([
             ],
             placeholder="Host Identity Verified"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
@@ -64,7 +66,6 @@ column1 = dbc.Col([
             ],
             placeholder="City"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
@@ -76,40 +77,33 @@ column1 = dbc.Col([
                 {'label': '02127 (Boston-East)', 'value': 2127},
                 {'label': '02129 (Boston-North)', 'value': 2129},
                 {'label': '02215 (Boston-West)', 'value': 2215},
-
                 {'label': '10001 (NYC-Manhattan)', 'value': 10001},
                 {'label': '10302 (NYC-Staten Island)', 'value': 10302},
                 {'label': '10453 (NYC-Bronx)', 'value': 10453},
                 {'label': '11212 (NYC-Brooklyn)', 'value': 11212},
                 {'label': '11361 (NYC-Queens)', 'value': 11361},
-
                 {'label': '20001 (DC-Central)', 'value': 20001},
                 {'label': '20003 (DC-South)', 'value': 20003},
                 {'label': '20007 (DC-West)', 'value': 20007},
                 {'label': '20011 (DC-North)', 'value': 20011},
                 {'label': '20018 (DC-East)', 'value': 20018},
-
                 {'label': '60601 (Chicago)', 'value': 60601},
                 {'label': '60044 (Chicago-North)', 'value': 60044},
                 {'label': '60185 (Chicago-West)', 'value': 60185},
                 {'label': '60617 (Chicago-South)', 'value': 60617},
-
                 {'label': '90001 (LA-South)', 'value': 90001},
                 {'label': '90004 (LA-Central)', 'value': 90004},
                 {'label': '90022 (LA-East)', 'value': 90022},
                 {'label': '90024 (LA-West)', 'value': 90024},
                 {'label': '90031 (LA-North)', 'value': 90031},
-
                 {'label': '94015 (SF-South)', 'value': 94015},
                 {'label': '94103 (SF-East)', 'value': 94103},
                 {'label': '94104 (SF-Central)', 'value': 94104},
                 {'label': '94111 (SF-North)', 'value': 94111},
                 {'label': '94116 (SF-West)', 'value': 94116},
-
             ],
             placeholder="Zipcode"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
@@ -150,11 +144,9 @@ column1 = dbc.Col([
             ],
             placeholder="Property Type"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
-
         html.Div([
             dbc.Button(
                 id="button",
@@ -163,7 +155,6 @@ column1 = dbc.Col([
                 color="primary"
             )
         ]),
-
     ],
     md=4,
 )
@@ -185,7 +176,6 @@ column2 = dbc.Col(
             ],
             placeholder="Room Type"
         ),
-
         html.Br(),
         html.Br(),
         dcc.Dropdown(
@@ -199,7 +189,6 @@ column2 = dbc.Col(
             ],
             placeholder="Bed Type"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
@@ -211,11 +200,9 @@ column2 = dbc.Col(
             ],
             placeholder="Instantly Bookable"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
-
         dcc.Dropdown(
             id='cleaning_fee',
             options=[
@@ -224,11 +211,9 @@ column2 = dbc.Col(
             ],
             placeholder="Cleaning Fee"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
-
         dcc.Dropdown(
             id='cancellation_policy',
             options=[
@@ -240,9 +225,6 @@ column2 = dbc.Col(
             ],
             placeholder="Cancellation Policy"
         ),
-
-        
-
         html.Br(),
         html.Br(),
         html.Br(),
@@ -252,9 +234,7 @@ column2 = dbc.Col(
         html.Br(),
         html.Br(),
         html.Br(),
-
         html.Div(id="output_container")
-
     ],
     md=4,
 )
@@ -271,58 +251,50 @@ column3 = dbc.Col(
             placeholder="# Accommodates",
             type="number"
         ),
-        
         html.Br(),
         html.Br(),
         html.Br(),
         html.Br(),
-
         dcc.Input(
             id="bedrooms",
             placeholder="# Bedrooms",
             type="number"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
         html.Br(),
-
         dcc.Input(
             id="beds",
             placeholder="# Beds",
             type="number"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
         html.Br(),
-
         dcc.Input(
             id="bathrooms",
             placeholder="# Bathrooms",
             type="number"
         ),
-
         html.Br(),
         html.Br(),
         html.Br(),
         html.Br(),
-
         dcc.Input(
             id="review_scores_rating",
             placeholder="Review Score Rating (0-100)",
             type="number"
         ),
-
+        dcc.Graph(id="pred_here")
     ],
     md=4
-
 )
 
 @app.callback(
-    Output("output_container", 'children'),
+    [Output("output_container", 'children'),
+    Output("pred_here", "figure")],
     [Input('host_since', 'date'),
      Input('button', 'n_clicks')],
     [State('property_type', 'value'),
@@ -340,32 +312,33 @@ column3 = dbc.Col(
      State('bedrooms', 'value'),
      State('beds', 'value')]
 )
-
-
 def create_observation(host_since, property_type, room_type, accommodates,
                        bathrooms, bed_type, cancellation_policy, cleaning_fee,
                        city, host_identity_verified, instant_bookable,
                        review_scores_rating, zipcode, bedrooms, beds,
                        n_clicks):
-
     if host_since is not None:
         datetime_obj = datetime.strptime(host_since, "%Y-%m-%d")
         utc_timestamp_seconds = datetime_obj.replace(tzinfo=timezone.utc).timestamp()
-        utc_timestamp = utc_timestamp_seconds / 86400
-
+        utc_timestamp_days = utc_timestamp_seconds / 86400
     if n_clicks is None:
         raise PreventUpdate
     else:
-
-        input_arr = np.array([[utc_timestamp, property_type, room_type,
+        input_arr = np.array([[utc_timestamp_days, property_type, room_type,
                                accommodates, bathrooms, bed_type,
                                cancellation_policy, cleaning_fee, city,
                                host_identity_verified, instant_bookable,
                                review_scores_rating, zipcode, bedrooms,
                                beds]]).astype(np.int)
-
         prediction = make_prediction(input_arr)
+
+        df = DataFrame([prediction])
+        # The predicted value graphed in a bar chart
+        fig = px.bar(df, x= 0, y= 0)
+        # The national average of listings graphed in a bar chart
+        fig.add_bar(x =[1], y=[144])
         
-    return prediction
+    return prediction, fig
+
 
 layout = dbc.Row([column1, column2, column3])
