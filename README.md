@@ -40,3 +40,4 @@ Alternatively see the GitHub documentation on creating a pull request.
 #### CONTRIBUTORS ####
 - [@andrewlee977](https://github.com/orgs/ft-airbnb-price-01/people/andrewlee977)
 - [@JAaron93](https://github.com/orgs/ft-airbnb-price-01/people/JAaron93)
+- [@iknight7000](https://github.com/orgs/ft-airbnb-price-01/people/@iknight7000)
