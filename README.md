@@ -2,6 +2,9 @@
 
 [Our Product Vision Here](https://docs.google.com/document/d/1OvequO0kK5dJZIkCUqQgHysbUKwPrAQn2oCjlpLD7AE/edit?usp=sharing)
 
+![Home Screen](/assets/app_screenshot_1.png?raw=true "Home Screen")
+![Predictions Page](/assets/app_screenshot_2.png?raw=true "Predictions Page")
+
 # What our app does #
 Our Airbnb app will return the optimal price for listings based on specific features such as location, property type, review rating score, host verification, bedrooms/bathrooms, amenities, accommodations, etc. It solves the problem by predicting how certain features affect the price of a listing.
 
