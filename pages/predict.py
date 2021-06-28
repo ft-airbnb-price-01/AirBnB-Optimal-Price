@@ -30,7 +30,8 @@ column1 = dbc.Col([
         dcc.Markdown(
             """
             ## Predictions
-            Input data about your listing to get a predicted price per night.
+            Fill all fields to get a predicted price per night. Prediction
+            may take a few seconds to populate.
             """
         ),
         dcc.DatePickerSingle(
@@ -155,6 +156,7 @@ column1 = dbc.Col([
                 color="primary"
             )
         ]),
+        dcc.Graph(id="pred_here")
     ],
     md=4,
 )
@@ -228,12 +230,6 @@ column2 = dbc.Col(
         html.Br(),
         html.Br(),
         html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
-        html.Br(),
         html.Div(id="output_container")
     ],
     md=4,
@@ -287,7 +283,6 @@ column3 = dbc.Col(
             placeholder="Review Score Rating (0-100)",
             type="number"
         ),
-        dcc.Graph(id="pred_here")
     ],
     md=4
 )
