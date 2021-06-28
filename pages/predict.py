@@ -312,6 +312,11 @@ def create_observation(host_since, property_type, room_type, accommodates,
                        city, host_identity_verified, instant_bookable,
                        review_scores_rating, zipcode, bedrooms, beds,
                        n_clicks):
+    """
+    Function converts host_since into number of days (integer),
+    and on click, converts user input into array for prediction.
+    Also plots predicted price with national average.
+    """
     if host_since is not None:
         datetime_obj = datetime.strptime(host_since, "%Y-%m-%d")
         utc_timestamp_seconds = datetime_obj.replace(tzinfo=timezone.utc).timestamp()
@@ -329,10 +334,9 @@ def create_observation(host_since, property_type, room_type, accommodates,
 
         df = DataFrame([prediction])
         # The predicted value graphed in a bar chart
-        fig = px.bar(df, x= 0, y= 0)
+        fig = px.bar(df, x=0, y=0)
         # The national average of listings graphed in a bar chart
         fig.add_bar(x =[1], y=[144])
     return ("$", prediction), fig
-
 
 layout = dbc.Row([column1, column2, column3])
