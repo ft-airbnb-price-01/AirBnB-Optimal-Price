@@ -325,15 +325,14 @@ def create_observation(host_since, property_type, room_type, accommodates,
                                host_identity_verified, instant_bookable,
                                review_scores_rating, zipcode, bedrooms,
                                beds]]).astype(np.int)
-        prediction = make_prediction(input_arr)
+        prediction = int(round(make_prediction(input_arr)[0], 0))
 
         df = DataFrame([prediction])
         # The predicted value graphed in a bar chart
         fig = px.bar(df, x= 0, y= 0)
         # The national average of listings graphed in a bar chart
         fig.add_bar(x =[1], y=[144])
-        
-    return prediction, fig
+    return ("$", prediction), fig
 
 
 layout = dbc.Row([column1, column2, column3])
