@@ -35,11 +35,23 @@ footer = dbc.Container(
         dbc.Col(
             html.P(
                 [
-                    html.Span('FT-Airbnb-Price-01', className='mr-2'), 
-                    # html.A(html.I(className='fas fa-envelope-square mr-1'), href='mailto:<you>@<provider>.com'), 
-                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/ft-airbnb-price-01/AirBnB-Optimal-Price'), 
-                    # html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/<you>/'), 
-                    # html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/<you>'), 
+                    html.Span('FT-Airbnb-Price-01', className='mr-1'), 
+                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/ft-airbnb-price-01/AirBnB-Optimal-Price'),
+                    
+                    html.Br(),
+                    html.Span('Joshua Elamin', className='mr-1'),
+                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/JAaron93'),
+                    html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/joshua-elamin-2b2ba9209/'),
+                    
+                    html.Br(),
+                    html.Span('Andrew Lee', className='mr-1'),
+                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/andrewlee977'),
+                    html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/andrewlee97/'),
+                    
+                    html.Br(),
+                    html.Span('Ian Knight', className='mr-1'),
+                    html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/iknight7000'),
+                    html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/ianknight480/'),
                 ], 
                 className='lead'
             )
