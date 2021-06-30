@@ -9,6 +9,6 @@ def make_prediction(input_arr):
     Loads pretrained model and predicts based on user input
     Returns predicted price per night of listing.
     """
-    nn_model = tf.keras.models.load_model('brute_force_grid_search_model/')
+    nn_model = tf.keras.models.load_model('bayesian_optimization_model/')
     prediction = nn_model.predict(input_arr)
     return prediction[0]
