@@ -336,7 +336,7 @@ def create_observation(host_since, property_type, room_type, accommodates,
         # The predicted value graphed in a bar chart
         fig = px.bar(df, x=0, y=0)
         # The national average of listings graphed in a bar chart
-        fig.add_bar(x =[1], y=[144])
+        fig.add_bar(x =[1], y=[144], name="National Average")
     return ("$", prediction), fig
 
 layout = dbc.Row([column1, column2, column3])
